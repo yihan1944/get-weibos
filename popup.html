@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>饭否美好时光</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>饭否美好时光</h1>
+      <p class="subtitle">下载你的饭否推文</p>
+    </div>
+
+    <div class="options">
+      <div class="option-group">
+        <label class="option-label">下载范围</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="scope" value="all" checked>
+            <span class="radio-custom"></span>
+            <span>全部推文</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="scope" value="recent">
+            <span class="radio-custom"></span>
+            <span>最近</span>
+            <input type="number" id="count" min="1" value="100" disabled class="count-input">
+            <span>条</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="option-group">
+        <label class="option-label">输出格式</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="format" value="markdown" checked>
+            <span class="radio-custom"></span>
+            <span>Markdown</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="format" value="pdf">
+            <span class="radio-custom"></span>
+            <span>HTML</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <button id="download" class="btn-primary">下载推文</button>
+
+    <div id="status" class="status hidden">
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+      <p class="status-text">准备中...</p>
+    </div>
+
+    <div id="error" class="error hidden"></div>
+
+    <div class="footer">
+      <p>开发者：<a href="https://fanfou.com/yihan1944" target="_blank">章北海的菜</a></p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

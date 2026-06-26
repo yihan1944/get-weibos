@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "饭否美好时光",
+  "version": "1.0.0",
+  "description": "将饭否推文下载为 Markdown 或 HTML 格式（可打印为 PDF）",
+  "permissions": ["activeTab", "scripting", "downloads"],
+  "host_permissions": ["http://fanfou.com/*", "https://fanfou.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon128.png"
+  },
+  "icons": {
+    "128": "icons/icon128.png"
+  }
+}
