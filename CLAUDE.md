@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-一个 Chrome 浏览器插件，用于将饭否推文下载为 Markdown 或 HTML 格式（可打印为 PDF）。
+一个 Chrome 浏览器插件，用于将微博推文下载为 Markdown 或 HTML 格式（可打印为 PDF）。
 
 ## 功能特性
 
@@ -35,16 +35,16 @@ get-fan/
 2. 开启"开发者模式"
 3. 点击"加载已解压的扩展程序"
 4. 选择本项目目录
-5. 打开饭否网站 (fanfou.com) 并登录
+5. 打开微博网站 (weibo.com) 并登录
 6. 点击插件图标，选择下载选项
 
 ## 技术说明
 
 - 使用 Chrome Extension Manifest V3
-- 通过 `chrome.scripting.executeScript` 注入内容脚本
-- 使用 `fetch` API 获取分页数据，避免页面跳转
+- 通过微博移动端 API (`m.weibo.cn/api/container/getIndex`) 获取推文数据
+- 用户页面 URL 格式：`https://weibo.com/u/{数字ID}`
+- containerid 格式：`107603{uid}`
 - HTML 文件可直接打印为 PDF（`Ctrl+P`）
-- 推文选择器：`#stream span.content`、`#stream a.time`
 
 ## 语言约定
 
