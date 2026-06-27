@@ -60,25 +60,27 @@ _10:00_
 ## 项目结构
 
 ```
-get-fan/
+get-weibos/
 ├── manifest.json      # Chrome 插件配置文件
 ├── popup.html         # 插件弹窗 HTML
 ├── popup.css          # 弹窗样式
 ├── popup.js           # 主要逻辑代码
 ├── icons/             # 插件图标目录
 │   └── icon128.png
+├── CLAUDE.md          # Claude Code 开发指引
 └── readme.md          # 本文件
 ```
 
 ## 注意事项
 
-- 需要先登录饭否才能使用
+- 需要先登录微博才能使用
+- 页面顶部会出现"扩展正在调试此浏览器"横幅，这是 `chrome.debugger` 正常行为
 - 大量推文导出需要逐页获取，请耐心等待
 - 插件运行时不会改变当前页面
 
 ## 开发说明
 
 - 使用 Chrome Extension Manifest V3
-- 通过 `chrome.scripting.executeScript` 注入脚本获取推文数据
+- 通过 `chrome.debugger` attach 到页面，在页面上下文执行 `fetch` 获取推文数据（绕过 CORS）
+- API 端点：`weibo.com/ajax/statuses/mymblog?uid={uid}&page={page}`
 - 使用 `fetch` API 获取分页数据，避免页面跳转
-- 推文选择器：`#stream span.content` / `#stream a.time`
