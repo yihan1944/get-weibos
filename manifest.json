@@ -3,8 +3,8 @@
   "name": "微博云端往事",
   "version": "1.0.0",
   "description": "将微博推文下载为 Markdown 或 HTML 格式（可打印为 PDF）",
-  "permissions": ["activeTab", "scripting", "downloads"],
-  "host_permissions": ["https://weibo.com/*", "https://m.weibo.cn/*"],
+  "permissions": ["activeTab", "scripting", "downloads", "debugger"],
+  "host_permissions": ["https://weibo.com/*"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icons/icon128.png"
