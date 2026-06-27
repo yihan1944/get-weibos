@@ -127,11 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchTweetsFromApi(tabId, uid, page) {
     const apiUrl = `https://weibo.com/ajax/statuses/mymblog?uid=${uid}&page=${page}&feature=0`;
 
-    // attach debugger
     await chrome.debugger.attach({ tabId }, '1.3');
 
     try {
-      // 通过 Runtime.evaluate 在页面上下文执行 fetch
       const expression = `
         new Promise((resolve, reject) => {
           fetch("${apiUrl}", { credentials: "include" })
@@ -154,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!data.data) throw new Error('API 返回异常: ' + raw.substring(0, 200));
 
       const tweets = [];
-      // PC API 返回 data.list
       for (const item of (data.data.list || data.data.statuses || [])) {
         let content = item.text_raw || stripHtml(item.text || '');
         if (!content) continue;
@@ -164,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const hasNextPage = tweets.length > 0 && data.data.list && data.data.list.length >= 20;
       return { tweets, hasNextPage };
     } finally {
-      // 始终 detach debugger
       await chrome.debugger.detach({ tabId }).catch(() => {});
     }
   }
